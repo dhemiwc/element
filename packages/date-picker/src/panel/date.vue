@@ -18,7 +18,7 @@
             @click="handleShortcutClick(shortcut)">{{ shortcut.text }}</button>
         </div>
         <div class="el-picker-panel__body">
-          <div class="el-date-picker__time-header" v-if="showTime">
+          <div class="el-date-picker__time-header" v-show="showTime">
             <span class="el-date-picker__editor-wrap">
               <el-input
                 :placeholder="t('el.datepicker.selectDate')"
