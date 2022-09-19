@@ -18,7 +18,7 @@
             @click="handleShortcutClick(shortcut)">{{ shortcut.text }}</button>
         </div>
         <div class="el-picker-panel__body">
-          <div class="el-date-picker__time-header" v-show="showTime">
+          <div class="el-date-picker__time-header" v-if="showTime">
             <span class="el-date-picker__editor-wrap">
               <el-input
                 :placeholder="t('el.datepicker.selectDate')"
@@ -29,6 +29,7 @@
             </span>
             <span class="el-date-picker__editor-wrap" v-clickoutside="handleTimePickClose">
               <el-input
+                :id="inputId"
                 ref="input"
                 @focus="timePickerVisible = true"
                 :placeholder="t('el.datepicker.selectTime')"
@@ -183,9 +184,7 @@
         /* istanbul ignore if */
         if (!val) return;
         this.$nextTick(_ => {
-          console.log('_', _);
-          console.log('this', this);
-          const inputElm = this.$refs.input.$el;
+          const inputElm = document.getElementById(this.inputId)
           if (inputElm) {
             this.pickerWidth = inputElm.getBoundingClientRect().width + 10;
           }
@@ -543,6 +542,9 @@
     },
 
     computed: {
+      inputId(){
+        return 'datetime-input-' + this._uid
+      },
       year() {
         return this.date.getFullYear();
       },
