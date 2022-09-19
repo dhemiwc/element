@@ -80,7 +80,7 @@
       :readonly="readonly"
       :validate-event="false"
       :class="{ 'is-focus': visible }"
-      :tabindex="(multiple && filterable) ? '-1' : null"
+      :tabindex="computedTabIndex"
       @focus="handleFocus"
       @blur="handleBlur"
       @input="debouncedOnInputChange"
@@ -176,6 +176,15 @@
     },
 
     computed: {
+    	computedTabIndex(){
+    		//if a tabindex is defined, prioritize it's use
+    		if(this.tabindex !== null){
+    			return this.tabindex
+				}
+
+    		//fallback to pre-existing functionality
+    		return (this.multiple && this.filterable) ? '-1' : null
+			},
       _elFormItemSize() {
         return (this.elFormItem || {}).elFormItemSize;
       },
@@ -304,7 +313,8 @@
       popperAppendToBody: {
         type: Boolean,
         default: true
-      }
+      },
+			tabindex: Number
     },
 
     data() {
