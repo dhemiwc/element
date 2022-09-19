@@ -179,7 +179,7 @@
     	computedTabIndex(){
     		//if a tabindex is defined, prioritize it's use
     		if(this.tabindex !== null){
-    			return this.tabindex
+    			return this.tabindex.toString()
 				}
 
     		//fallback to pre-existing functionality
