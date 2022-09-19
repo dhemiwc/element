@@ -178,8 +178,8 @@
     computed: {
     	computedTabIndex(){
     		//if a tabindex is defined, prioritize it's use
-    		if(this.tabindex !== null){
-    			return this.tabindex.toString()
+    		if(this.tabindex){
+    			return this.tabindex
 				}
 
     		//fallback to pre-existing functionality
@@ -314,7 +314,7 @@
         type: Boolean,
         default: true
       },
-			tabindex: Number
+			tabindex: String
     },
 
     data() {
