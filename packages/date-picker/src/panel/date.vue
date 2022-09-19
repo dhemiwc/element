@@ -183,6 +183,8 @@
         /* istanbul ignore if */
         if (!val) return;
         this.$nextTick(_ => {
+          console.log('_', _);
+          console.log('this', this);
           const inputElm = this.$refs.input.$el;
           if (inputElm) {
             this.pickerWidth = inputElm.getBoundingClientRect().width + 10;
