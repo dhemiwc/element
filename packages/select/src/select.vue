@@ -176,15 +176,16 @@
     },
 
     computed: {
-    	computedTabIndex(){
-    		//if a tabindex is defined, prioritize it's use
-    		if(this.tabindex){
-    			return this.tabindex
-				}
+      computedTabIndex() {
+        // if a tabindex is defined, prioritize its use
+        if (this.tabindex) {
+          return this.tabindex;
+        }
 
-    		//fallback to pre-existing functionality
-    		return (this.multiple && this.filterable) ? '-1' : null
-			},
+        // fallback to pre-existing functionality
+        return (this.multiple && this.filterable) ? '-1' : null;
+      },
+
       _elFormItemSize() {
         return (this.elFormItem || {}).elFormItemSize;
       },
@@ -314,7 +315,7 @@
         type: Boolean,
         default: true
       },
-			tabindex: String
+      tabindex: String
     },
 
     data() {

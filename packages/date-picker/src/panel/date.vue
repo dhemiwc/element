@@ -24,7 +24,7 @@
                 :placeholder="t('el.datepicker.selectDate')"
                 :value="visibleDate"
                 size="small"
-                @input="val => userInputDate = val"
+                @input="userInputDate = $event"
                 @change="handleVisibleDateChange" />
             </span>
             <span class="el-date-picker__editor-wrap" v-clickoutside="handleTimePickClose">
@@ -35,7 +35,7 @@
                 :placeholder="t('el.datepicker.selectTime')"
                 :value="visibleTime"
                 size="small"
-                @input="val => userInputTime = val"
+                @input="userInputTime = $event"
                 @change="handleVisibleTimeChange" />
               <time-picker
                 ref="timepicker"
@@ -184,7 +184,7 @@
         /* istanbul ignore if */
         if (!val) return;
         this.$nextTick(_ => {
-          const inputElm = document.getElementById(this.inputId)
+          const inputElm = document.getElementById(this.inputId);
           if (inputElm) {
             this.pickerWidth = inputElm.getBoundingClientRect().width + 10;
           }
@@ -542,8 +542,8 @@
     },
 
     computed: {
-      inputId(){
-        return 'datetime-input-' + this._uid
+      inputId() {
+        return 'datetime-input-' + this._uid;
       },
       year() {
         return this.date.getFullYear();
